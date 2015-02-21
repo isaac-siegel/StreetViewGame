@@ -37,31 +37,11 @@ function SendDbEntry()
 
 }
 
-$(function(){
-$('.card').hover(function(){
-        $(this).find('.btn-custom').slideDown(250);
-    },function(){
-        $(this).find('.btn-custom').slideUp(250); //.fadeOut(205)
-    });
-})
-
-$(function(){
-$('.card').hover(function(){
-        $(this).find('.btn-custom2').slideDown(250);
-    },function(){
-        $(this).find('.btn-custom2').slideUp(250); //.fadeOut(205)
-    });
-})
-
-// Function to point all yes buttons' click() to ProcessYesButton()
-$(document).ready( function() {
-     $('.btn-custom').on('click', ProcessYesButton);
-});
-
-// Function to point all yes buttons' click() to ProcessYesButton()
-$(document).ready( function() {
-     $('.btn-custom2').on('click', ProcessNoButton);
-});
+function HideAllButtons()
+{
+    $(this).find('.btn-custom').slideUp(250); //.fadeOut(205)
+    $(this).find('.btn-custom2').slideUp(250); //.fadeOut(205)
+}
 
 // Enable Buttons for a specific user pane
 function EnableButtons(user)
@@ -122,3 +102,35 @@ function incrementVote(amount, buttonId){
     } )
 }
 
+/***************************************************************
+*
+*                       Run Time Code
+*
+***************************************************************/
+$(function(){
+$('.card').hover(function(){
+        $(this).find('.btn-custom').slideDown(250);
+    },function(){
+        $(this).find('.btn-custom').slideUp(250); //.fadeOut(205)
+    });
+})
+
+$(function(){
+$('.card').hover(function(){
+        $(this).find('.btn-custom2').slideDown(250);
+    },function(){
+        $(this).find('.btn-custom2').slideUp(250); //.fadeOut(205)
+    });
+})
+
+// Function to point all yes buttons' click() to ProcessYesButton()
+$(document).ready( function() {
+     $('.btn-custom').on('click', ProcessYesButton);
+});
+
+// Function to point all yes buttons' click() to ProcessYesButton()
+$(document).ready( function() {
+     $('.btn-custom2').on('click', ProcessNoButton);
+});
+
+$(document).ready( HideAllButtons)
