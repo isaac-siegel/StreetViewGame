@@ -36,3 +36,11 @@ function SendDbEntry()
     writeToFirebase(PLAYER_ID,{URL: rest});
 
 }
+
+$(function(){
+$('.card').hover(function(){
+        $(this).find('.btn-custom').slideDown(250);
+    },function(){
+        $(this).find('.btn-custom').slideUp(250); //.fadeOut(205)
+    });
+})

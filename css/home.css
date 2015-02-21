@@ -44,13 +44,10 @@ body {
     max-width: 125px;
 }
 
-/*
-.emphasis 
-{
-    border-top: 4px solid transparent;
-    }
-.emphasis:hover 
-{
-    border-top: 4px solid #1abc9c;
+.card > .btn-custom {
+    color: #fff;
+    background-color: #47c8ed;    
+    display:none;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
 }
-*/
+
