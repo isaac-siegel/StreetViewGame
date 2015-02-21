@@ -1,6 +1,3 @@
-
-
-
 // String formatter function
 String.format = function() {
     // The string containing the format items (e.g. "{0}")
@@ -38,4 +35,37 @@ function SendDbEntry()
     // Push REST to database
     writeToFirebase(PLAYER_ID,{URL: rest});
 
+}
+
+// Function to point all yes buttons' click() to ProcessYesButton()
+$(document).ready( function() {
+     $('.btn-custom').on('click', ProcessYesButton);
+});
+
+// Function to point all yes buttons' click() to ProcessYesButton()
+$(document).ready( function() {
+     $('.btn-custom2').on('click', ProcessNoButton);
+});
+
+// ReEnable a disabled button
+function reEnableButton(buttonId)
+{
+    var button = '#' + buttonId;
+    $('button').prop("disabled", false);
+}
+
+// Disable "yes" buttons and renable them some time later
+function ProcessYesButton()
+{
+  $(this).prop("disabled",true);
+   var buttonId = $(this).prop('id');
+   setTimeout(function(){ reEnableButton(buttonId) }, 1000);
+}
+
+// Disable "no" buttons and renable them some time later
+function ProcessNoButton()
+{
+ $(this).prop("disabled",true);
+  var buttonId = $(this).prop('id');
+  setTimeout(function(){ reEnableButton(buttonId) }, 1000);
 }
