@@ -37,7 +37,6 @@ function SendDbEntry()
 
 }
 
-<<<<<<< HEAD
 $(function(){
 $('.card').hover(function(){
         $(this).find('.btn-custom').slideDown(250);
@@ -45,7 +44,15 @@ $('.card').hover(function(){
         $(this).find('.btn-custom').slideUp(250); //.fadeOut(205)
     });
 })
-=======
+
+$(function(){
+$('.card').hover(function(){
+        $(this).find('.btn-custom2').slideDown(250);
+    },function(){
+        $(this).find('.btn-custom2').slideUp(250); //.fadeOut(205)
+    });
+})
+
 // Function to point all yes buttons' click() to ProcessYesButton()
 $(document).ready( function() {
      $('.btn-custom').on('click', ProcessYesButton);
@@ -78,4 +85,4 @@ function ProcessNoButton()
   var buttonId = $(this).prop('id');
   setTimeout(function(){ reEnableButton(buttonId) }, 1000);
 }
->>>>>>> master
+
