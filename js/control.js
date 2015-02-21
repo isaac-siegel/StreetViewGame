@@ -197,6 +197,8 @@ function  displayScoreBoard(t1,t2,t3,t4)  {
                                     + PLAYER_4 + ": "+t4 +" \n "
     ,   timer: 100000 });
 
+    obliterate();
+
 }
 
 

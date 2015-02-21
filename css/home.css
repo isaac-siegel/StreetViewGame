@@ -17,7 +17,7 @@ body {
 
 }
 .btn-custom {
-  background-color: hsl(206, 69%, 33%) !important;
+  background-color: hsl(114, 87%, 18%) !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1a5b8e", endColorstr="#1a5b8e");
   background-image: -khtml-gradient(linear, left top, left bottom, from(#1a5b8e), to(#1a5b8e));
@@ -46,7 +46,7 @@ body {
 
 .card > .btn-custom {
     color: #fff;
-    background-color: #47c8ed;    
+    background-color: #47c8ed;
     display:none;
     text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
 }

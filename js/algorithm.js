@@ -103,6 +103,7 @@ function ProcessNoButton()
 }
 
 function incrementVote(amount, buttonId){
+    console.log("incrementVote() " + amount)
     var playerID = buttonId.substr(0,7);
 
     var voteRef = myFirebaseRef.child(playerID).child("votes");
