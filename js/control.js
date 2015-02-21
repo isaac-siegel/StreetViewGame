@@ -4,7 +4,7 @@
 
 
 
-var RESET_ON_PAGE_LOAD = true;
+var RESET_ON_PAGE_LOAD = false;
 var PLAYER_1 = "Player1";
 var PLAYER_2 = "Player2";
 var PLAYER_3 = "Player3";
