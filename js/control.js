@@ -8,6 +8,7 @@ var PLAYER_2 = "Player2";
 var PLAYER_3 = "Player3";
 var PLAYER_4 = "Player4";
 var PLAYER_ID;
+var MAX_VOTE_TOTAL = 5;
 
 var players = ["Player1", "Player2", "Player3", "Player4"];
 
@@ -20,6 +21,7 @@ if(RESET_ON_PAGE_LOAD){
 }
 
 determinePlayerID()
+endGame()
 
 
 function determinePlayerID(){
@@ -46,7 +48,8 @@ function determinePlayerID(){
                     myFirebaseRef.child("prompt").on('value', function(dataSnapshot) {
                         console.log(dataSnapshot.val())
                         if(dataSnapshot.val() != null)
-                            swal({   title: "Find: "+dataSnapshot.val(),   text: "Ready. Set. Go.",   timer: 5000 });
+                            swal({   title: "Find: "+dataSnapshot.val(),   text: "You are: "
+                                    +PLAYER_ID + "  Ready. Set. Go.",   timer: 5000 });
 
                     })
 
@@ -166,3 +169,42 @@ for(var i = 0; i < players.length; i++)
 {
     subscribeToDb(players[i]);
 }
+
+
+function endGame(){
+    myFirebaseRef.on('value', function(result) {
+        var total = 0;
+
+        var t1 = result.child(PLAYER_1).val().votes
+        var t2 = result.child(PLAYER_2).val().votes
+        var t3 = result.child(PLAYER_3).val().votes
+        var t4 = result.child(PLAYER_4).val().votes
+
+        total = t1+t2+t3+t4;
+
+
+
+
+
+        if (total >= MAX_VOTE_TOTAL)
+        {
+            displayScoreBoard(t1,t2,t3,t4);
+        }
+
+
+    })
+}
+
+function  displayScoreBoard(t1,t2,t3,t4)  {
+
+    swal({   title: "SCOREBOARD",   text:  PLAYER_1 + ": "+t1 +" \n "
+                                            + PLAYER_2 + ": "+t2 +" \n "
+                                        +   PLAYER_3 + ": "+t3 +" \n "
+                                    + PLAYER_4 + ": "+t4 +" \n "
+    ,   timer: 100000 });
+
+}
+
+
+
+
