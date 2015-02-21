@@ -33,7 +33,7 @@ function SendDbEntry()
     // Create data package structure here and pass to writeToFirebase
 
     // Push REST to database
-    writeToFirebase(PLAYER_ID,{URL: rest});
+    writeToFirebase(PLAYER_ID,{URL: rest, votes: 0});
 
 }
 
@@ -57,15 +57,35 @@ function reEnableButton(buttonId)
 // Disable "yes" buttons and renable them some time later
 function ProcessYesButton()
 {
-  $(this).prop("disabled",true);
-   var buttonId = $(this).prop('id');
-   setTimeout(function(){ reEnableButton(buttonId) }, 1000);
+    $(this).prop("disabled",true);
+    var buttonId = $(this).prop('id');
+
+    incrementVote(1, buttonId);
+
+    setTimeout(function(){ reEnableButton(buttonId) }, 1000);
 }
 
 // Disable "no" buttons and renable them some time later
 function ProcessNoButton()
 {
- $(this).prop("disabled",true);
-  var buttonId = $(this).prop('id');
-  setTimeout(function(){ reEnableButton(buttonId) }, 1000);
+    $(this).prop("disabled",true);
+    var buttonId = $(this).prop('id');
+    incrementVote(-1, buttonId);
+
+    setTimeout(function(){ reEnableButton(buttonId) }, 1000);
+}
+
+function incrementVote(amount, buttonId){
+    var playerID = buttonId.substr(0,7);
+
+
+    var voteRef = myFirebaseRef.child(playerID).child("votes");
+
+    voteRef.once("value", function(result) {
+        voteRef.set(result.val()+amount)
+    } )
+
+
+
+
 }

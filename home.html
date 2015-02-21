@@ -21,9 +21,20 @@
         }
 
         #foundItButton{
-            margin-top: 300px;
+            /*margin-left: 50%;*/
+            /*position: absolute;*/
+
+            background-color: transparent;
+            color: transparent;
+            border: none;
 
 
+
+
+        }
+        #containerButton {
+            padding-left: 80%;
+            padding-top: 6%;
         }
 
     </style>
@@ -42,13 +53,13 @@
                             </div>
                         <div class = "col-cs-12 divider text-center">
                             <div class = "col-xs-3 col-sm-3 emphasis">
-                                <button id="btn1Yes" class= "btn btn-success btn-custom " 
+                                <button id="Player1Yes" class= "btn btn-success btn-custom "
                                         >
                                     <span class = "fa fa-plus-circle">
                                     </span>
                                     <span style="font-size:10px;">Yea</span>
                                 </button>
-                                <button id="btn1No" class= "btn  btn-info btn-custom2">
+                                <button id="Player1No" class= "btn  btn-info btn-custom2">
                                     <span class = "fa fa-user">
                                     </span>
                                     <span style="font-size:10px;">Fuck No</span>
@@ -69,13 +80,13 @@
                             </div>
                         <div class = "col-cs-12 divider text-center">
                             <div class = "col-xs-6 col-sm-3 emphasis">
-                                 <button id="btn2Yes"class= "btn btn-success btn-custom " 
+                                 <button id="Player2Yes"class= "btn btn-success btn-custom "
                                         >
                                     <span class = "fa fa-plus-circle">
                                     </span>
                                     <span style="font-size:10px;">Yea</span>
                                 </button>
-                                <button id="btn2No" class= "btn  btn-info btn-custom2">
+                                <button id="Player2No" class= "btn  btn-info btn-custom2">
                                     <span class = "fa fa-user">
                                     </span>
                                     <span style="font-size:10px;">Fuck No</span>
@@ -96,13 +107,13 @@
                             </div>
                         <div class = "col-cs-12 divider text-center">
                             <div class = "col-xs-6 col-sm-3 emphasis">
-                                 <button id="btn3Yes" class= "btn btn-success btn-custom " 
+                                 <button id="Player3Yes" class= "btn btn-success btn-custom "
                                         >
                                     <span class = "fa fa-plus-circle">
                                     </span>
                                     <span style="font-size:10px;">Yea</span>
                                 </button>
-                                <button id="btn3No" class= "btn  btn-info btn-custom2">
+                                <button id="Player3No" class= "btn  btn-info btn-custom2">
                                     <span class = "fa fa-user">
                                     </span>
                                     <span style="font-size:10px;">Fuck No</span>
@@ -122,13 +133,13 @@
                             </div>
                         <div class = "col-cs-12 divider text-center">
                             <div class = "col-xs-6 col-sm-3 emphasis">
-                                <button id="btn4Yes" class= "btn btn-success btn-custom " 
+                                <button id="Player4Yes" class= "btn btn-success btn-custom "
                                         >
                                     <span class = "fa fa-plus-circle">
                                     </span>
                                     <span style="font-size:10px;">Yea</span>
                                 </button>
-                                <button id="btn4No" class= "btn  btn-info btn-custom2">
+                                <button id="Player4No" class= "btn  btn-info btn-custom2">
                                     <span class = "fa fa-user">
                                     </span>
                                     <span style="font-size:10px;">Fuck No</span>
@@ -162,9 +173,11 @@
             </table>
         </div>
 
-        <div style="z-index:1000; position:absolute;">
+        <div id="containerButton" style="z-index:1000; position:absolute;">
 
-            <button id="foundItButton" class= "btn btn-success btn-custom " onclick="SendDbEntry()">I found it!</button>
+            <button id="foundItButton" class= " " onclick="SendDbEntry()">
+                <img  width="300px" src="img/camera4.png" >
+            </button>
 
             <!--<img id="Player1" src=""/>-->
         </div>
