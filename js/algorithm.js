@@ -1,3 +1,6 @@
+
+
+
 // String formatter function
 String.format = function() {
     // The string containing the format items (e.g. "{0}")
@@ -33,6 +36,6 @@ function SendDbEntry()
     // Create data package structure here and pass to writeToFirebase
 
     // Push REST to database
-    writeToFirebase("Player1",{URL: rest});
+    writeToFirebase(PLAYER_ID,{URL: rest});
 
 }

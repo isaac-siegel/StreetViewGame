@@ -9,6 +9,7 @@ var PLAYER_1 = "Player1";
 var PLAYER_2 = "Player2";
 var PLAYER_3 = "Player3";
 var PLAYER_4 = "Player4";
+var PLAYER_ID;
 
 var players = ["Player1", "Player2", "Player3", "Player4"];
 
@@ -19,6 +20,32 @@ var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
 if(RESET_ON_PAGE_LOAD){
     obliterate();
 }
+
+determinePlayerID()
+
+
+function determinePlayerID(){
+
+    myFirebaseRef.once('value', function(dataSnapshot) {
+
+        for(var i = 0; i < players.length; i++){
+
+
+            if( ! dataSnapshot.hasChild(players[i]) ) {
+                PLAYER_ID = players[i];
+                console.log("Assigning this player to: "+ PLAYER_ID)
+                writeToFirebase(PLAYER_ID,"");
+                return;
+
+            }
+
+        }
+    });
+
+
+
+}
+
 
 
 
