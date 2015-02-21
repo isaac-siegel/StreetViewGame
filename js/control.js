@@ -14,7 +14,7 @@ var PLAYER_ID;
 var players = ["Player1", "Player2", "Player3", "Player4"];
 
 //Global firebase base reference
-var myFirebaseRef = new Firebase("https://streetview2.firebaseio.com/");
+var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
 
 //Resets database when the page loads
 if(RESET_ON_PAGE_LOAD){
@@ -35,6 +35,24 @@ function determinePlayerID(){
                 PLAYER_ID = players[i];
                 writeToFirebase(PLAYER_ID,"");
                 initializeStartCoordinate(PLAYER_ID);
+
+                if(PLAYER_ID == PLAYER_1)
+                {
+                    var object = prompt("Select something to Find!", "Ex: a red car");
+                    myFirebaseRef.child("prompt").set(object);
+
+
+
+                }
+                 {
+                    myFirebaseRef.child("prompt").on('value', function(dataSnapshot) {
+                        console.log(dataSnapshot.val())
+                        swal({   title: "Find: "+dataSnapshot.val(),   text: "Ready. Set. Go.",   timer: 5000 });
+
+                    })
+
+                }
+
                 return;
 
             }
