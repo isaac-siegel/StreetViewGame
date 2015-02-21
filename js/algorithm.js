@@ -1,6 +1,3 @@
-
-
-
 // String formatter function
 String.format = function() {
     // The string containing the format items (e.g. "{0}")
