@@ -46,7 +46,6 @@ function determinePlayerID(){
                 }
                  {
                     myFirebaseRef.child("prompt").on('value', function(dataSnapshot) {
-                        console.log(dataSnapshot.val())
                         if(dataSnapshot.val() != null)
                             swal({   title: "Find: "+dataSnapshot.val(),   text: "You are: "
                                     +PLAYER_ID + "  Ready. Set. Go.",   timer: 5000 });
@@ -103,14 +102,7 @@ function initializeStartCoordinate(playerID){
 
     //setTimeout(function(){changeLocation(initialLat, initialLong) }, 50);
     //Im so sorry
-
-
-
 }
-
-
-
-
 
 //Executed on button press
 function userFoundLocation()
@@ -174,24 +166,26 @@ for(var i = 0; i < players.length; i++)
 function endGame(){
     myFirebaseRef.on('value', function(result) {
         var total = 0;
+        var t1 = 0;
+        var t2 = 0;
+        var t3 = 0;
+        var t4 = 0;
 
-        var t1 = result.child(PLAYER_1).val().votes
-        var t2 = result.child(PLAYER_2).val().votes
-        var t3 = result.child(PLAYER_3).val().votes
-        var t4 = result.child(PLAYER_4).val().votes
+        if(result.child(Player_1) != null)
+            t1 = result.child(PLAYER_1).val().votes
+        if(result.child(Player_2) != null)
+            t2 = result.child(PLAYER_2).val().votes
+        if(result.child(Player_3) != null)
+            t3 = result.child(PLAYER_3).val().votes
+        if(result.child(Player_4) != null)
+            t4 = result.child(PLAYER_4).val().votes
 
         total = t1+t2+t3+t4;
-
-
-
-
 
         if (total >= MAX_VOTE_TOTAL)
         {
             displayScoreBoard(t1,t2,t3,t4);
         }
-
-
     })
 }
 
