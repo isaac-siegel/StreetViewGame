@@ -2,8 +2,6 @@
  * Created by isaacsiegel on 2/21/15.
  */
 
-
-
 var RESET_ON_PAGE_LOAD = false;
 var PLAYER_1 = "Player1";
 var PLAYER_2 = "Player2";
@@ -14,7 +12,7 @@ var PLAYER_ID;
 var players = ["Player1", "Player2", "Player3", "Player4"];
 
 //Global firebase base reference
-var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
+var myFirebaseRef = new Firebase("https://streetview2.firebaseio.com/");
 
 //Resets database when the page loads
 if(RESET_ON_PAGE_LOAD){
@@ -139,23 +137,29 @@ function subscribeToDb(userName){
         return;
 
     }
-    else{
-        userRef.on("value", function(result) {
+    else
+    {
+        userRef.child('URL').on("value", function(result) {
             //TODO set the appropriate image box to the returned url
             if(result.val() != null)
-                populateImageView(userName, result.val().URL)
+            {
+                populateImageView(userName, result.val())
+            }
         });
     }
 }
 
 function populateImageView(user, url)
 {
-    var userID = "#"+user;
+    // Construct Id for image pane corresponding to player
+    var userId = "#"+user;
 
-    $(userID).attr("src", url);
+    // Update Image pane
+    $(userId).attr("src", url);
+    
+    // Enable yes and no button corresponding to image pane
+    EnableButtons(user);
 }
-
-
 
 // Subscribe to event
 for(var i = 0; i < players.length; i++)

@@ -63,48 +63,62 @@ $(document).ready( function() {
      $('.btn-custom2').on('click', ProcessNoButton);
 });
 
-// ReEnable a disabled button
-function reEnableButton(buttonId)
+// Enable Buttons for a specific user pane
+function EnableButtons(user)
 {
-    var button = '#' + buttonId;
-    $('button').prop("disabled", false);
+    var buttonYesId = '#' + user + 'Yes';
+    var buttonNoId = '#' + user + 'No';
+
+    // Enable both buttons
+    $(buttonYesId).prop("disabled", false);
+    $(buttonNoId).prop("disabled", false);
+}
+
+// Disable Buttons for a specific user pane
+function DisableButtons(buttonId)
+{
+    var playerId = buttonId.substr(0,7);
+    var buttonYesId = '#' + playerId + 'Yes';
+    var buttonNoId = '#' + playerId + 'No';
+
+    // Disable both buttons
+    $(buttonYesId).prop("disabled", true);
+    $(buttonNoId).prop("disabled", true);
 }
 
 // Disable "yes" buttons and renable them some time later
 function ProcessYesButton()
 {
-    $(this).prop("disabled",true);
+    //$(this).prop("disabled",true);
     var buttonId = $(this).prop('id');
 
-    incrementVote(1, buttonId);
+    // Disable voting buttons
+    DisableButtons(buttonId);
 
-    setTimeout(function(){ reEnableButton(buttonId) }, 1000);
+    // Apply vote
+    incrementVote(1, buttonId);
 }
 
 // Disable "no" buttons and renable them some time later
 function ProcessNoButton()
 {
-
-
-    $(this).prop("disabled",true);
+    //$(this).prop("disabled",true);
     var buttonId = $(this).prop('id');
-    incrementVote(-1, buttonId);
 
-    setTimeout(function(){ reEnableButton(buttonId) }, 1000);
+    // Disable voting buttons
+    DisableButtons(buttonId);
+
+    // Apply vote
+    incrementVote(-1, buttonId);
 }
 
 function incrementVote(amount, buttonId){
     var playerID = buttonId.substr(0,7);
-
 
     var voteRef = myFirebaseRef.child(playerID).child("votes");
 
     voteRef.once("value", function(result) {
         voteRef.set(result.val()+amount)
     } )
-
-
-
-
 }
 
