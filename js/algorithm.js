@@ -33,6 +33,6 @@ function SendDbEntry()
     // Create data package structure here and pass to writeToFirebase
 
     // Push REST to database
-    writeToFirebase("isaac",{URL: rest});
+    writeToFirebase("Player1",{URL: rest});
 
 }

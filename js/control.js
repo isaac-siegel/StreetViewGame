@@ -5,7 +5,12 @@
 
 
 var RESET_ON_PAGE_LOAD = true;
+var PLAYER_1 = "Player1";
+var PLAYER_2 = "Player2";
+var PLAYER_3 = "Player3";
+var PLAYER_4 = "Player4";
 
+var players = ["Player1", "Player2", "Player3", "Player4"];
 
 //Global firebase base reference
 var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
@@ -21,30 +26,6 @@ if(RESET_ON_PAGE_LOAD){
 function userFoundLocation()
 {
 
-    var url = "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=40.720032,-73.988354&fov=90&heading=235&pitch=10"
-    var userName = "isaac";
-
-
-    //TODO: remove and replace with   pull current data  from street view
-    var object = {
-
-        snapshotURL: url
-
-    }
-
-    myFirebaseRef.on("value", function(result) {
-       //loadUserImage(PLAYER_1)
-       //loadUserImage(PLAYER_2)
-       //loadUserImage(PLAYER_3)
-       //loadUserImage(PLAYER_4)
-
-
-
-
-    });
-
-
-    writeToFirebase( userName,object);
 }
 
 
@@ -53,8 +34,6 @@ function writeToFirebase(userName,obj){
     myFirebaseRef.child(userName).set(obj);
 
     //myFirebaseRef.push(obj)
-
-
 }
 
 function obliterate(){
@@ -62,8 +41,8 @@ function obliterate(){
 }
 
 
-function loadUserImage(userName){
-
+// subscribe to user's table data event changes
+function subscribeToDb(userName){
 
     var userRef = myFirebaseRef.child(userName);
 
@@ -73,23 +52,13 @@ function loadUserImage(userName){
 
     }
     else{
-
-
-    userRef.on("value", function(result) {
-        console.log(result.val());
-        //TODO set the appropriate image box to the returned url
-        if(result.val() != null)
-            populateImageView(userName, result.val().URL)
-
-
-
-    });
-
+        userRef.on("value", function(result) {
+            //TODO set the appropriate image box to the returned url
+            if(result.val() != null)
+                populateImageView(userName, result.val().URL)
+        });
     }
-
-
 }
-
 
 function populateImageView(user, url){
     console.log("inside populateImageView")
@@ -99,3 +68,10 @@ function populateImageView(user, url){
     $(userID).attr("src", url);
 }
 
+
+
+// Subscribe to event
+for(var i = 0; i < players.length; i++)
+{
+    subscribeToDb(players[i]);
+}
