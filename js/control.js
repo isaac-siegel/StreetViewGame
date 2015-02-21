@@ -47,7 +47,8 @@ function determinePlayerID(){
                  {
                     myFirebaseRef.child("prompt").on('value', function(dataSnapshot) {
                         console.log(dataSnapshot.val())
-                        swal({   title: "Find: "+dataSnapshot.val(),   text: "Ready. Set. Go.",   timer: 5000 });
+                        if(dataSnapshot.val() != null)
+                            swal({   title: "Find: "+dataSnapshot.val(),   text: "Ready. Set. Go.",   timer: 5000 });
 
                     })
 
