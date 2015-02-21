@@ -28,24 +28,46 @@ function userFoundLocation()
     //TODO: remove and replace with   pull current data  from street view
     var object = {
 
-        user: userName,
         snapshotURL: url
 
     }
 
 
-    writeToFirebase(object);
+    writeToFirebase( userName,object);
 }
 
 
-function writeToFirebase(obj){
+function writeToFirebase(userName,obj){
 
-    myFirebaseRef.push(obj);
+    myFirebaseRef.child(userName).set(obj);
+
+    //myFirebaseRef.push(obj)
 
 
 }
 
 function obliterate(){
     myFirebaseRef.set({});
+}
+
+
+function getUserImageURL(userName){
+    var userRef = myFirebaseRef.child(userName);
+
+    userRef.on("value", function(result) {
+        console.log(result.val());
+        //TODO set the appropriate image box to the returned url
+        populateImageView(userName, result.val().snapshotURL)
+    });
+
+}
+
+
+function populateImageView(user, url){
+    console.log("inside populateImageView")
+
+    var userID = "#"+user;
+
+    $(userID).attr("src", url);
 }
 

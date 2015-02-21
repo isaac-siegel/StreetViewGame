@@ -12,23 +12,55 @@
     </style>
 
 
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-    <script src="js/algorithm.js"></script>
-    <script src="js/control.js"></script>
-    <script src="js/googleSetup.js"></script>
+
   </head>
   
-  <!-- BODY -->
+   <!--BODY -->
+  <!--<body>-->
+    <!--<div id="pano" style="width: 100%; height: 100%; float:left; z-index:0; position:absolute;">-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;<div style="z-index:1000; position:absolute;">&ndash;&gt;-->
+
+      <!--&lt;!&ndash;<button onclick="SendDbEntry()">click me</button>&ndash;&gt;-->
+      <!--&lt;!&ndash;&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+  <!--</body>-->
+
+
   <body>
-    <div id="pano" style="width: 100%; height: 100%; float:left; z-index:0; position:absolute;">
-    </div>
+  <div id="pano" style="width: 100%; height: 100%; float:left; z-index:0; position:absolute;"></div>
+  <div id="panoInfo" style="width: 45%; height: 100%;float:left; position: absolute; display: none">
+      <table>
+          <tr>
+              <td><b>Position</b></td><td id="position_cell">&nbsp;</td>
+          </tr>
+          <tr>
+              <td><b>POV Heading</b></td><td id="heading_cell">270</td>
+          </tr>
+          <tr>
+              <td><b>POV Pitch</b></td><td id="pitch_cell">0.0</td>
+          </tr>
+          <tr>
+              <td><b>Pano ID</b></td><td id="pano_cell">&nbsp;</td>
+          </tr>
+          <!--<table id="links_table"></table>-->
+      </table>
+  </div>
 
-    <div style="z-index:1000; position:absolute;">
+  <div style="z-index:1000; position:absolute;">
 
-      <button onclick="SendDbEntry()">click me</button>
-      
-    </div>
+  <button onclick="SendDbEntry()">click me</button>
+
+  </div>
   </body>
+
+
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.2.0/firebase.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+  <script src="js/googleSetup.js"></script>
+
+  <script src="js/algorithm.js"></script>
+  <script src="js/control.js"></script>
 </html>
