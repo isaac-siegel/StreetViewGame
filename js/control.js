@@ -33,18 +33,79 @@ function determinePlayerID(){
 
             if( ! dataSnapshot.hasChild(players[i]) ) {
                 PLAYER_ID = players[i];
-                console.log("Assigning this player to: "+ PLAYER_ID)
                 writeToFirebase(PLAYER_ID,"");
+                initializeStartCoordinate(PLAYER_ID);
+
+                if(PLAYER_ID == PLAYER_1)
+                {
+                    var object = prompt("Select something to Find!", "Ex: a red car");
+                    myFirebaseRef.child("prompt").set(object);
+
+
+
+                }
+                 {
+                    myFirebaseRef.child("prompt").on('value', function(dataSnapshot) {
+                        console.log(dataSnapshot.val())
+                        swal({   title: "Find: "+dataSnapshot.val(),   text: "Ready. Set. Go.",   timer: 5000 });
+
+                    })
+
+                }
+
                 return;
 
             }
 
         }
     });
+}
+
+
+function initializeStartCoordinate(playerID){
+    console.log("initStartCoordinate()" + playerID)
+
+    var difLat = .0009;
+    var difLong = .001186;
+
+    var sLat = 40.758721;
+    var sLong = -73.984759;
+
+    //var sLat = 37.802209;
+    //var sLong = -122.417968 ;
+
+    var initialLat = 0;
+    var initialLong = 0;
+
+
+    if(playerID == PLAYER_1){
+        initialLat = sLat + difLat+.00004;
+        initialLong = sLong;
+
+    }
+    else if(playerID == PLAYER_2){
+        initialLat = sLat - difLat;
+        initialLong  = sLong;
+
+    }
+    else if(playerID == PLAYER_3){
+        initialLat = sLat;
+        initialLong  = sLong + difLong;
+
+    }
+    else if(playerID == PLAYER_4){
+        initialLat = sLat ;
+        initialLong  = sLong - difLong -.0019;
+
+    }
+
+    //setTimeout(function(){changeLocation(initialLat, initialLong) }, 50);
+    //Im so sorry
 
 
 
 }
+
 
 
 
@@ -67,7 +128,6 @@ function obliterate(){
     myFirebaseRef.set({});
 }
 
-
 // subscribe to user's table data event changes
 function subscribeToDb(userName){
 
@@ -87,9 +147,8 @@ function subscribeToDb(userName){
     }
 }
 
-function populateImageView(user, url){
-    console.log("inside populateImageView")
-
+function populateImageView(user, url)
+{
     var userID = "#"+user;
 
     $(userID).attr("src", url);
