@@ -4,7 +4,7 @@
 
 
 
-var RESET_ON_PAGE_LOAD = true;
+var RESET_ON_PAGE_LOAD = false;
 var PLAYER_1 = "Player1";
 var PLAYER_2 = "Player2";
 var PLAYER_3 = "Player3";
@@ -14,7 +14,7 @@ var PLAYER_ID;
 var players = ["Player1", "Player2", "Player3", "Player4"];
 
 //Global firebase base reference
-var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
+var myFirebaseRef = new Firebase("https://streetview2.firebaseio.com/");
 
 //Resets database when the page loads
 if(RESET_ON_PAGE_LOAD){
@@ -34,6 +34,7 @@ function determinePlayerID(){
             if( ! dataSnapshot.hasChild(players[i]) ) {
                 PLAYER_ID = players[i];
                 writeToFirebase(PLAYER_ID,"");
+                initializeStartCoordinate(PLAYER_ID);
                 return;
 
             }
@@ -41,6 +42,55 @@ function determinePlayerID(){
         }
     });
 }
+
+
+function initializeStartCoordinate(playerID){
+    console.log("initStartCoordinate()" + playerID)
+
+    var difLat = .0009;
+    var difLong = .001186;
+
+    var sLat = 40.758721;
+    var sLong = -73.984759;
+
+    //var sLat = 37.802209;
+    //var sLong = -122.417968 ;
+
+    var initialLat = 0;
+    var initialLong = 0;
+
+
+    if(playerID == PLAYER_1){
+        initialLat = sLat + difLat+.00004;
+        initialLong = sLong;
+
+    }
+    else if(playerID == PLAYER_2){
+        initialLat = sLat - difLat;
+        initialLong  = sLong;
+
+    }
+    else if(playerID == PLAYER_3){
+        initialLat = sLat;
+        initialLong  = sLong + difLong;
+
+    }
+    else if(playerID == PLAYER_4){
+        initialLat = sLat ;
+        initialLong  = sLong - difLong -.0019;
+
+    }
+
+    //setTimeout(function(){changeLocation(initialLat, initialLong) }, 50);
+    //Im so sorry
+
+
+
+}
+
+
+
+
 
 //Executed on button press
 function userFoundLocation()
