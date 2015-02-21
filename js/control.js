@@ -32,6 +32,17 @@ function userFoundLocation()
 
     }
 
+    myFirebaseRef.on("value", function(result) {
+       //loadUserImage(PLAYER_1)
+       //loadUserImage(PLAYER_2)
+       //loadUserImage(PLAYER_3)
+       //loadUserImage(PLAYER_4)
+
+
+
+
+    });
+
 
     writeToFirebase( userName,object);
 }
@@ -51,14 +62,31 @@ function obliterate(){
 }
 
 
-function getUserImageURL(userName){
+function loadUserImage(userName){
+
+
     var userRef = myFirebaseRef.child(userName);
+
+    if (userRef == null) {
+        console.log("userRef == null")
+        return;
+
+    }
+    else{
+
 
     userRef.on("value", function(result) {
         console.log(result.val());
         //TODO set the appropriate image box to the returned url
-        populateImageView(userName, result.val().snapshotURL)
+        if(result.val() != null)
+            populateImageView(userName, result.val().URL)
+
+
+
     });
+
+    }
+
 
 }
 
