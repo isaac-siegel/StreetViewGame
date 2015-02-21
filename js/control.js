@@ -3,20 +3,17 @@
  */
 
 
-//Global firebase base reference
 
 var RESET_ON_PAGE_LOAD = true;
 
+
+//Global firebase base reference
+var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
 
 //Resets database when the page loads
 if(RESET_ON_PAGE_LOAD){
     obliterate();
 }
-
-var myFirebaseRef = new Firebase("https://streetviewgame.firebaseio.com/");
-
-
-
 
 
 
