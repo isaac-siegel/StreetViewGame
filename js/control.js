@@ -33,7 +33,6 @@ function determinePlayerID(){
 
             if( ! dataSnapshot.hasChild(players[i]) ) {
                 PLAYER_ID = players[i];
-                console.log("Assigning this player to: "+ PLAYER_ID)
                 writeToFirebase(PLAYER_ID,"");
                 return;
 
@@ -41,13 +40,7 @@ function determinePlayerID(){
 
         }
     });
-
-
-
 }
-
-
-
 
 //Executed on button press
 function userFoundLocation()
@@ -66,7 +59,6 @@ function writeToFirebase(userName,obj){
 function obliterate(){
     myFirebaseRef.set({});
 }
-
 
 // subscribe to user's table data event changes
 function subscribeToDb(userName){
@@ -87,9 +79,8 @@ function subscribeToDb(userName){
     }
 }
 
-function populateImageView(user, url){
-    console.log("inside populateImageView")
-
+function populateImageView(user, url)
+{
     var userID = "#"+user;
 
     $(userID).attr("src", url);
