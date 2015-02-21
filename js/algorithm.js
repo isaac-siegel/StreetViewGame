@@ -66,6 +66,16 @@ function DisableButtons(buttonId)
     $(buttonNoId).prop("disabled", true);
 }
 
+// Disable All Buttons
+function DisableAllButtons()
+{
+    var playerConst = "Player{0}"
+    for(var i = 1; i < 5; i++)
+    {  
+       DisableButtons(String.format(playerConst, i)) 
+    }
+}
+
 // Disable "yes" buttons and renable them some time later
 function ProcessYesButton()
 {
@@ -134,3 +144,6 @@ $(document).ready( function() {
 });
 
 $(document).ready( HideAllButtons)
+
+// All buttons are disabled at start of game
+DisableAllButtons()

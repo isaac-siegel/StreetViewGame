@@ -171,13 +171,13 @@ function endGame(){
         var t3 = 0;
         var t4 = 0;
 
-        if(result.child(Player_1) != null)
+        if(result.child(PLAYER_1) != null)
             t1 = result.child(PLAYER_1).val().votes
-        if(result.child(Player_2) != null)
+        if(result.child(PLAYER_2) != null)
             t2 = result.child(PLAYER_2).val().votes
-        if(result.child(Player_3) != null)
+        if(result.child(PLAYER_3) != null)
             t3 = result.child(PLAYER_3).val().votes
-        if(result.child(Player_4) != null)
+        if(result.child(PLAYER_4) != null)
             t4 = result.child(PLAYER_4).val().votes
 
         total = t1+t2+t3+t4;
