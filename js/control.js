@@ -98,7 +98,7 @@ function initializeStartCoordinate(playerID) {
 
     }
 
-    //setTimeout(function(){changeLocation(initialLat, initialLong) }, 50);
+    setTimeout(function(){changeLocation(initialLat, initialLong) }, 50);
     //Im so sorry
 }
 
