@@ -63,9 +63,7 @@ function determinePlayerID(){
 }
 
 
-function initializeStartCoordinate(playerID){
-    console.log("initStartCoordinate()" + playerID)
-
+function initializeStartCoordinate(playerID) {
     var difLat = .0009;
     var difLong = .001186;
 
@@ -171,14 +169,18 @@ function endGame(){
         var t3 = 0;
         var t4 = 0;
 
-        if(result.child(PLAYER_1) != null)
-            t1 = result.child(PLAYER_1).val().votes
-        if(result.child(PLAYER_2) != null)
-            t2 = result.child(PLAYER_2).val().votes
-        if(result.child(PLAYER_3) != null)
-            t3 = result.child(PLAYER_3).val().votes
-        if(result.child(PLAYER_4) != null)
-            t4 = result.child(PLAYER_4).val().votes
+        if(result.child(PLAYER_1).val() != null)
+            if(result.child(PLAYER_1).val() != "")
+                t1 = result.child(PLAYER_1).val().votes
+        if(result.child(PLAYER_2).val() != null)
+            if(result.child(PLAYER_2).val() != "")
+                t2 = result.child(PLAYER_2).val().votes
+        if(result.child(PLAYER_3).val() != null)
+            if(result.child(PLAYER_3).val() != "")
+                t3 = result.child(PLAYER_3).val().votes
+        if(result.child(PLAYER_4).val() != null)
+            if(result.child(PLAYER_4).val() != "")
+                t4 = result.child(PLAYER_4).val().votes
 
         total = t1+t2+t3+t4;
 
