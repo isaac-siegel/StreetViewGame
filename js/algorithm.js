@@ -19,7 +19,7 @@ String.format = function() {
 function GenerateRest (lat, lon, heading, pitch)
 {
 	var GOOGLE_REST = "https://maps.googleapis.com/maps/api/streetview?size=" +
-        "400x400&location={0},{1}&fov=90&heading={2}&pitch={3}";
+        "400x400&location={0},{1}&fov=40&heading={2}&pitch={3}";
 	return String.format(GOOGLE_REST, lat, lon, heading, pitch)
 }
 
