@@ -15,6 +15,10 @@ var players = ["Player1", "Player2", "Player3", "Player4"];
 //Global firebase base reference
 var myFirebaseRef = new Firebase("https://streetview2.firebaseio.com/");
 
+var gameRoomName = prompt("Enter the name of your gameroom");
+
+myFirebaseRef = myFirebaseRef.child(gameRoomName);
+
 //Resets database when the page loads
 if(RESET_ON_PAGE_LOAD){
     obliterate();
